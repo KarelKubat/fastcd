@@ -1,0 +1,14 @@
+
+Usage:   fastcd INITIALS
+
+Fastcd attempts to locate a directory indicated by the first characters of
+INITIALS. The directory is searched for from: the current directory, $HOME,
+and finally from /. A list of hits is shown.
+
+Example: `fastcd ulb` might resolve in /usr/local/bin, /users/leo/books, etc.
+
+Copyright (c) Karel Kubat <karel@kubat.nl>.
+Distributed under GPLV3, which means that you're free to do with it as you like
+but you must redistribute any changes. As a courtesy, I'd appreciate being
+notified of such changes, so that I may integrate them into a next release.
+
