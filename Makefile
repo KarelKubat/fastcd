@@ -3,7 +3,7 @@ SRC = $(wildcard *.cc)
 OBJ = $(patsubst %.cc, %.o, $(SRC))
 
 fastcd: $(OBJ)
-	$(CXX) -o fastcd $(OBJ) -lpthread
+	$(CXX) -o fastcd $(OBJ) -lpthread -lncurses
 %.o: %.cc
 	$(CXX) -c -Wall -Werror -DVER=\"$(VER)\" $<
 

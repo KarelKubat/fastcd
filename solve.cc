@@ -1,9 +1,15 @@
 #include "fastcd.h"
 
+static void sendsolution(std::string const &s) {
+  solutionsmutex.lock();
+  solutionsqueue.push(s);
+  solutionsmutex.unlock();
+}
+
 static void solvehere(std::string const &initials) {
-  // Done yet?
+  // Initials exhausted? Enter in the queue of possibilities.
   if (initials.length() == 0) {
-    std::cout << curdir() << '\n';
+    sendsolution(curdir());
     return;
   }
 
@@ -41,4 +47,7 @@ void solve(std::string const &initials) {
   solveby(".", initials);
   solveby(getenv("HOME"), initials);
   solveby("/", initials);
+
+  // Send end-of-solutions marker
+  sendsolution("");
 }
