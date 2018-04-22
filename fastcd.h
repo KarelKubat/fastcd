@@ -1,3 +1,5 @@
+
+#include <algorithm>
 #include <ctype.h>
 #include <dirent.h>
 #include <iostream>
@@ -19,6 +21,7 @@ extern void cleanup();
 extern std::string curdir();
 extern char kbdchar();
 extern void usage();
+extern std::vector<std::string> scandir(char initial);
 extern void solve(std::string const &initials);
 extern ino_t statdir(std::string const &dirname);
 

@@ -34,24 +34,12 @@ static void solvehere(std::string const &initials) {
   visited[curd] = true;
 
   // Solve for next character in the initials and recurse.
-  DIR *dirp = opendir(".");
-  if (!dirp)
-    return;
-
-  struct dirent *direntp;
-  while ( (direntp = readdir(dirp)) ) {
-    bool match;
-    if (ignorecase)
-      match = tolower(direntp->d_name[0]) == tolower(initials[0]);
-    else
-      match = direntp->d_name[0] == initials[0];
-    if (match && !chdir(direntp->d_name)) {
-      // Possible match
+  std::vector<std::string> entries = scandir(initials[0]);
+  for (std::string &entry: scandir(initials[0]))
+    if (!chdir(entry.c_str())) {
       solvehere(initials.substr(1));
       chdir("..");
     }
-  }
-  closedir(dirp);
 }
 
 static void solveby(std::string const &startdir, std::string const &initials) {
