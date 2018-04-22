@@ -12,6 +12,7 @@ usage.o: usage.cc usage.h
 usage.h: usage.txt
 	echo '#define USAGETXT \' > usage.h
 	awk '{printf("\"%s\\n\" \\\n", $$0)}' < usage.txt >> usage.h
+	echo '""' >> usage.h
 $(OBJ): fastcd.h Makefile
 
 clean:
