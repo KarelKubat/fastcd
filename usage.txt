@@ -10,6 +10,7 @@ Initials in the argument are compared without case sensitivity.
 
 Copyright (c) Karel Kubat <karel@kubat.nl>.
 Distributed under GPLV3, which means that you're free to do with it as you like
-but you must redistribute any changes. As a courtesy, I'd appreciate being
-notified of such changes, so that I may integrate them into a next release.
+as long as you keep this copyright notice intact, but you must redistribute any
+changes. As a courtesy, I'd appreciate being notified of such changes, so that
+I may integrate them into a next release.
 

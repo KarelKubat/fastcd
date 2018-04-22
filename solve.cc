@@ -1,15 +1,18 @@
 #include "fastcd.h"
 
-static void sendsolution(std::string const &s) {
-  solutionsmutex.lock();
-  solutionsqueue.push(s);
-  solutionsmutex.unlock();
-}
-
 static void solvehere(std::string const &initials) {
-  // Initials exhausted? Enter in the queue of possibilities.
   if (initials.length() == 0) {
-    sendsolution(curdir());
+    // Initials exhausted? Enter in the queue of possibilities.
+    if (solutions.size() >= keyselectors.length()) {
+      // More solutions than keyselectors (keys to hit) are not allowed.      
+      std::cerr << "Too many solutions, refine search and retry\n";
+      exit(1);
+    }
+
+    // Display solution and enter as a solution.
+    std::string curd = curdir();
+    solutions.push_back(curd);
+    std::cerr << keyselectors[solutions.size()] << ' ' << curd << '\n';
     return;
   }
 
@@ -47,7 +50,4 @@ void solve(std::string const &initials) {
   solveby(".", initials);
   solveby(getenv("HOME"), initials);
   solveby("/", initials);
-
-  // Send end-of-solutions marker
-  sendsolution("");
 }

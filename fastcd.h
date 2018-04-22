@@ -2,21 +2,18 @@
 #include <dirent.h>
 #include <iostream>
 #include <mutex>
-#include <ncurses.h>
 #include <queue>
 #include <stdio.h>
 #include <stdlib.h>
+#include <termios.h>
 #include <thread>
 #include <unistd.h>
 #include <vector>
 #include <sys/types.h>
 
-extern void choosefinal();
+extern void choose();
 extern std::string curdir();
-extern void displayandchoose();
-extern char ncurseskeywait();
-extern char ncurseskeynowait();
-extern void ncursesinit();
+extern char kbdchar();
 extern void usage();
 extern void solve(std::string const &initials);
 
@@ -26,5 +23,5 @@ extern void solve(std::string const &initials);
 #define EXTERN extern
 #endif
 
-EXTERN std::mutex solutionsmutex;
-EXTERN std::queue<std::string> solutionsqueue;
+EXTERN std::string keyselectors;
+EXTERN std::vector<std::string> solutions;
