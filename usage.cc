@@ -3,6 +3,6 @@
 
 void usage() {
   std::cerr << "This is fastcd V" << VER << '\n';
-  std::cerr << USAGETXT;
+  std::cerr << USAGETXT << '\n';
   exit(1);
 }

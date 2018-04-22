@@ -1,6 +1,7 @@
 VER = "0.01"
 SRC = $(wildcard *.cc)
 OBJ = $(patsubst %.cc, %.o, $(SRC))
+BINDIR = ~/bin
 
 fastcd: $(OBJ)
 	$(CXX) -g -o fastcd $(OBJ) -lpthread
@@ -15,3 +16,6 @@ $(OBJ): fastcd.h Makefile
 
 clean:
 	rm -f fastcd *.o usage.h
+
+install: fastcd
+	install -s fastcd $(BINDIR)/fastcd

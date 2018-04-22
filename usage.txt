@@ -1,16 +1,28 @@
 
-Usage:   fastcd INITIALS
+Usage: fastcd [FLAGS] INITIALS
 
 Fastcd attempts to locate a directory indicated by the first characters of
-INITIALS. The directory is searched for from: the current directory, $HOME,
-and finally from /. A list of hits is shown.
+INITIALS. The directory is searched for from: the current directory, $HOME, and
+finally from /. A list of hits is shown on stderr. Once you make a selection,
+the chosen result is shown on stdout.
 
-Example: `fastcd ulb` might resolve in /usr/local/bin, /Users/leo/books, etc.
-Initials in the argument are compared without case sensitivity.
+Example: `fastcd ulb` might resolve in ~/united/liberated/blurbs,
+/usr/local/bin, etc.
 
-Copyright (c) Karel Kubat <karel@kubat.nl>.
-Distributed under GPLV3, which means that you're free to do with it as you like
-as long as you keep this copyright notice intact, but you must redistribute any
-changes. As a courtesy, I'd appreciate being notified of such changes, so that
-I may integrate them into a next release.
+Supported flags:
+  -h, -? : This text
+  -i     : Matching of initials is done case-insensitively (`ulb` will also
+           match /Users/leo/books)
+  -v     : Displays the version ID and stops.
 
+Fastcd invocations are meant to be evaluated by your shell. E.g. for bash:
+  cd $(fastcd ulb)
+Or use a handy function:
+  function fcd() { cd $(fastcd $1) }
+
+Copyright (c) Karel Kubat <karel@kubat.nl>.  Distributed under GPLV3, for
+details please read https://www.gnu.org/licenses/gpl-3.0.en.html. This
+basically means that you're free to do with it as you like as long as you keep
+this copyright notice intact, but you must redistribute any changes. As a
+courtesy, I'd appreciate being notified of such changes, so that I may
+integrate them into a next release.
