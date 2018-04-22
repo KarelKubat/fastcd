@@ -44,3 +44,6 @@ EXTERN std::string keyselectors;
 
 // Vector of solved directories
 EXTERN std::vector<std::string> solutions;
+
+// Home dir, used in solving and displaying ~ in results
+EXTERN std::string homedir;

@@ -22,7 +22,11 @@ static void solvehere(std::string const &initials) {
       os << ",ENTER ";
     else
       os << "       ";
-    os << curd << '\n';
+    if (!strncmp(curd.c_str(), homedir.c_str(), homedir.size()))
+      os << '~' << curd.substr(homedir.size());
+    else
+      os << curd;
+    os << '\n';
     std::cerr << os.str();
     return;
   }
@@ -61,7 +65,7 @@ static void solveby(std::string const &startdir, std::string const &initials) {
 
 void solve(std::string const &initials) {
   solveby(".", initials);
-  solveby(getenv("HOME"), initials);
+  solveby(homedir, initials);
   solveby("/", initials);
 
   if (solutions.size() == 0) {

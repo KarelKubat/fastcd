@@ -10,6 +10,7 @@ int main(int argc, char **argv) {
     "abcdefghijklmnopqrstuvwxyz"
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   ignorecase = false;
+  homedir = getenv("HOME");
 
   // Parse flags
   int opt;
