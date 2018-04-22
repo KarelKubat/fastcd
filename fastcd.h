@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <ctype.h>
 #include <dirent.h>
+#include <errno.h>
 #include <iostream>
 #include <map>
 #include <mutex>
@@ -9,6 +10,7 @@
 #include <sstream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <termios.h>
 #include <thread>
 #include <unistd.h>
