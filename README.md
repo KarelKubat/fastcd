@@ -7,7 +7,7 @@ Lazy typers (on Unix systems) unite!
 Instead of typing `cd /some/where/to/go`, how much cooler is it
 to type `fcd swtg`. Yes, you just type the initials of the directory you want
 to go to, and presto. Imagine all the microseconds you'll be saving in the
-days to come!
+days, weeks, years, and decades to come!
 
 If there are multiple choices, `fastcd` makes sure that you get a list to pick
 from:
@@ -34,21 +34,48 @@ key without waiting for `fastcd` to dig through your file system.
 
 ## What you need to install it
 
-1. Get the sources and `make install`. This compiles `fastcd` and installs it
-   into `$HOME/bin`. If you want another location, just use:
+1.  Get the sources and `make install`. This compiles `fastcd` and installs it
+    into `$HOME/bin`. If you want another location, say `/usr/local/bin/`,
+    then use:
 
-   ```shell
-   BINDIR=/usr/local/bin make install
-   ```
+    ```shell
+    BINDIR=/usr/local/bin make install
+    ```
 
-1. Add the following handy function to your `~/.bashrc`:
+1.  Add the following handy function to your `~/.bashrc`:
 
 	```shell
-	function fcd() { cd $(fastcd $1) }
+	function fcd() { cd $(fastcd "$1") }
 	```
-	
-1.  For even fancier things, try plaing around with `pushd/popd`. Use your
-	imagination.
+
+    If you'd like to resolve initials to directories without regard to
+    casing, which is e.g. convenient on MacOSX, then you can add flag `-i`
+    to the invocation:
+
+    ```shell
+    function fcd() { cd $(fastcd -i "$1") }
+    ```
+
+1.  For even fancier things, try playing around with `pushd/popd`. Use your
+	imagination. For example:
+
+    ```shell
+    function fcd() {
+      if [ -z "$1" ]; then
+        popd > /dev/null;
+      else
+        if [ -z "$2" ]; then
+          newdir=$(fastcd "$1");
+          test "$newdir" != "." && pushd "$newdir" > /dev/null;
+        else
+          echo 'fcd - fast directory changer' 1>&2;
+          echo 'Usage: fcd ulb - takes you to say /usr/local/bin' 1>&2;
+          echo '   or: fcd     - takes you to the previous directory' 1>&2;
+          return 1;
+        fi;
+      fi
+    }
+    ```
 
 ## Dependencies
 
