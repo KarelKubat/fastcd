@@ -2,12 +2,12 @@
 
 static void solvehere(std::string const &initials) {
   std::string curd = curdir();
-  static std::map<std::string, bool> visited;
-  
+  static std::map<ino_t, bool> visited;
+
   if (initials.length() == 0) {
     // Initials exhausted? Enter in the queue of possibilities.
     if (solutions.size() >= keyselectors.length()) {
-      // More solutions than keyselectors (keys to hit) are not allowed.      
+      // More solutions than keyselectors (keys to hit) are not allowed.
       std::cerr << "fastcd: too many solutions, refine search and retry\n";
       exit(1);
     }
@@ -33,9 +33,9 @@ static void solvehere(std::string const &initials) {
 
   // Stop recursing if we've been here before or we can't stat the dir.
   ino_t in = statdir(curd);
-  if (in == (ino_t)-1 || visited.count(curd) > 0)
+  if (in == (ino_t)-1 || visited.count(in) > 0)
     return;
-  visited[curd] = true;
+  visited[in] = true;
 
   // Solve for next character in the initials and recurse.
   std::vector<std::string> entries = scandir(initials[0]);
