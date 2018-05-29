@@ -14,13 +14,13 @@ from:
 
 ```shell
 $ fcd uls
-0,ENTER /usr/local/sbin
-1       /usr/local/share
-2       /usr/lib/system
+default /usr/local/sbin
+      1 /usr/local/share
+      2 /usr/lib/system
 ```
 
--- at which point you hit 0 or ENTER for the first choice, 1 for the second,
-and so on.
+-- at which point you hit 0 or ENTER for the first (default) choice, 1 for the
+second, and so on.
 
 The initials that are provided to `fastcd` are resolved in the following order:
 
@@ -56,6 +56,21 @@ key without waiting for `fastcd` to dig through your file system.
     function fcd() { cd $(fastcd -i "$1") }
     ```
 
+1.  If you like ANSI coloring (and who doesn't), add colors for the key
+	selector (flag `-k`) and/or for the directory of choice (flag
+	`-d`). Coloring is stated as optional modifiers `bright`, `underline` or
+	`inverse` (reverses foreground and background). This is followed by one of
+	the colors `black`, `red`, `yellow`, `blue`, `magenta`, `cyan` or `white`.
+	For example: `-k brightred -d underlineblue` will display the keys to press
+	in bright red, and the directories the keypresses lead to as underlined
+	blue. The shell function then becomes:
+
+	```shell
+	function fcd() {
+	  cd $(fastcd -k brightred -d underlineblue "$1")
+    }
+	```
+
 1.  For even fancier things, try playing around with `pushd/popd`. Use your
 	imagination. For example:
 
@@ -65,7 +80,7 @@ key without waiting for `fastcd` to dig through your file system.
         popd > /dev/null;
       else
         if [ -z "$2" ]; then
-          newdir=$(fastcd "$1");
+          newdir=$(fastcd -k brightred -d underlineblue "$1");
           test "$newdir" != "." && pushd "$newdir" > /dev/null;
         else
           echo 'fcd - fast directory changer' 1>&2;
