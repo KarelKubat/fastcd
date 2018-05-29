@@ -85,3 +85,15 @@ You will need:
    `-std=c++11`).
 *  Installed "standard" libraries. Basically, a normal Linux system or MacOSX
    will do.
+
+## Licensing
+
+FastCD is distributed under GPLV3, see the LICENCE.md file. This means that it's
+free and without warranty and you're free to do with it as you like, make
+changes, whatnot - but you must
+
+*  Keep the license conditions intact
+*  Make any changes that you apply available to others
+
+As a courtesy, I'd love to be informed of any changes that you might make, so
+that I may incorporate them into a new release.
