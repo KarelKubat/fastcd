@@ -23,10 +23,9 @@ static void solvehere(std::string const &initials) {
     if (optioncolor != "")
       os << optioncolor;
     if (solutions.size() == 1)
-      os << "ENTER,";
+      os << "default ";
     else
-      os << "      ";
-    os << keyselectors[solutions.size() - 1] << ' ';
+      os << "      " << keyselectors[solutions.size() - 1] << ' ';
     if (optioncolor != "")
       os << resetcolor;
 
