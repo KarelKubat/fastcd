@@ -13,7 +13,13 @@ Supported flags:
   -h, -? : This text
   -i     : Matching of initials is done case-insensitively (`ulb` will also
            match /Users/leo/books)
+  -k COL : When displaying, show key to press colored colored with  COL
+  -d COL : When displaying, show selectable directory colored with COL
   -v     : Displays the version ID and stops.
+
+Display colors (COL in the above) consist of optional prefixes bright,
+underline and inverse that may be repeated, and a color that is one of black,
+red, yellow, blue, magenta, cyan, white. Example: brightunderlineblue.
 
 Fastcd invocations are meant to be evaluated by your shell. E.g. for bash:
   cd $(fastcd ulb)
@@ -22,7 +28,7 @@ Or use a handy function:
 
 Copyright (c) Karel Kubat <karel@kubat.nl>.  Distributed under GPLV3, for
 details please read https://www.gnu.org/licenses/gpl-3.0.en.html. This
-basically means that you're free to do with it as you like as long as you keep
-this copyright notice intact, but you must redistribute any changes. As a
-courtesy, I'd appreciate being notified of such changes, so that I may
-integrate them into a next release.
+basically means that it's free, without warranty, and you're free to do with it
+as you like as long as you keep this copyright notice intact, but you must
+redistribute any changes. As a courtesy, I'd appreciate being notified of such
+changes, so that I may integrate them into a next release.

@@ -47,3 +47,6 @@ EXTERN std::vector<std::string> solutions;
 
 // Home dir, used in solving and displaying ~ in results
 EXTERN std::string homedir;
+
+// Options and directory coloring for colorful ANSI output
+EXTERN std::string optioncolor, directorycolor, resetcolor;

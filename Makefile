@@ -1,4 +1,4 @@
-VER = "0.01"
+VER = "0.02"
 SRC = $(wildcard *.cc)
 OBJ = $(patsubst %.cc, %.o, $(SRC))
 BINDIR = ~/bin
