@@ -22,11 +22,11 @@ static void solvehere(std::string const &initials) {
     // selector
     if (optioncolor != "")
       os << optioncolor;
-    os << keyselectors[solutions.size() - 1];
     if (solutions.size() == 1)
-      os << ",ENTER ";
+      os << "ENTER,";
     else
-      os << "       ";
+      os << "      ";
+    os << keyselectors[solutions.size() - 1] << ' ';
     if (optioncolor != "")
       os << resetcolor;
 

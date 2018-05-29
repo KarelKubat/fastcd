@@ -22,7 +22,7 @@ static std::string colorcode(std::string opt) {
     { "white",   "37" }
   };
   // Return escape sequence, magic-start + 0 for reset
-  std::string ret = resetcolor;
+  std::string ret = "\033[0";
 
   // Match prefixes, as many as there are
   bool prefix_found = true;
@@ -43,7 +43,7 @@ static std::string colorcode(std::string opt) {
   for (auto const &colorentry: colors) {
     // colorentry.first is the color, .second is the escape sequence
     if (opt == colorentry.first) {
-      ret += ';' + colors[colorentry.second];
+      ret += ";" + colorentry.second;
       color_found = true;
     }
   }
