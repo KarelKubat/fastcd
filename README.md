@@ -30,7 +30,7 @@ The initials that are provided to `fastcd` are resolved in the following order:
 
 FastCD even accepts keyboard input while it's still generating the list of
 solutions. If you see your destination in the list, you can just hit the right
-key without waiting for `fastcd` to dig through your file system.
+key without waiting for `fastcd` to dig through the rest of your file system.
 
 ## What you need to install it
 
@@ -58,12 +58,12 @@ key without waiting for `fastcd` to dig through your file system.
 
 1.  If you like ANSI coloring (and who doesn't), add colors for the key
 	selector (flag `-k`) and/or for the directory of choice (flag
-	`-d`). Coloring is stated as optional modifiers `bright`, `underline` or
-	`inverse` (reverses foreground and background). This is followed by one of
-	the colors `black`, `red`, `yellow`, `blue`, `magenta`, `cyan` or `white`.
-	For example: `-k brightred -d underlineblue` will display the keys to press
-	in bright red, and the directories the keypresses lead to as underlined
-	blue. The shell function then becomes:
+	`-d`). Coloring is stated as optional modifiers `bright`, `underline` etc.
+	This is followed by a color like `red`, `yellow`, etc. (You can get a list
+	of all prefixes and colors using the flags `-P` and `-C`.)  For example:
+	`-k brightred -d underlineblue` will display the keys to press in bright
+	red, and the directories the keypresses lead to as underlined blue. The
+	shell function then becomes:
 
 	```shell
 	function fcd() {
@@ -91,6 +91,9 @@ key without waiting for `fastcd` to dig through your file system.
       fi
     }
     ```
+
+Too many flags to remember? Just type `fastcd` or `fastcd -h` to get an
+overview.
 
 ## Dependencies
 

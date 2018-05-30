@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 
   // Parse flags
   int opt;
-  while ( (opt = getopt(argc, argv, "?hivk:d:")) != -1 )
+  while ( (opt = getopt(argc, argv, "?hivk:d:PC")) != -1 )
     switch (opt) {
       case '?':
       case 'h':
@@ -33,6 +33,16 @@ int main(int argc, char **argv) {
         break;
       case 'v':
         std::cerr << VER << '\n';
+        exit(0);
+      case 'P':
+        std::cout << "Available colorization prefixes:\n";
+        for (auto const &prefix: all_prefixes())
+          std::cout << "    " << prefix << '\n';
+        exit(0);
+      case 'C':
+        std::cout << "Available colors:\n";
+        for (auto const &color: all_colors())
+          std::cout << "    " << color << '\n';
         exit(0);
     }
 

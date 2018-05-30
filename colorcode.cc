@@ -1,23 +1,46 @@
 #include "fastcd.h"
 
+// Known prefixes (modifiers to colors)
+static std::map<std::string, std::string> prefixes = {
+  { "bright",    "1" },
+  { "underline", "4" },
+  { "inverse",   "7" }
+};
+// Known colors
+static std::map<std::string, std::string> colors = {
+  { "black",        "30" },
+  { "red",          "31" },
+  { "green",        "32" },
+  { "yellow",       "33" },
+  { "blue",         "34" },
+  { "magenta",      "35" },
+  { "cyan",         "36" },
+  { "lightgray",    "37" },
+  { "darkgray",     "90" },
+  { "lightred",     "91" },
+  { "lightgreen",   "92" },
+  { "lightyellow",  "93" },
+  { "lightblue",    "94" },
+  { "lightmagenta", "95" },
+  { "lightcyan",    "96" },
+  { "white",        "97" },
+};
+
+std::vector<std::string> all_colors() {
+  std::vector<std::string> ret;
+  for (auto const &colorentry: colors)
+    ret.push_back(colorentry.first);
+  return ret;
+}
+
+std::vector<std::string> all_prefixes() {
+  std::vector<std::string> ret;
+  for (auto const &prefixentry: prefixes)
+    ret.push_back(prefixentry.first);
+  return ret;
+}
+
 std::string colorcode(std::string opt) {
-  // Known prefixes (modifiers to colors)
-  static std::map<std::string, std::string> prefixes = {
-    { "bright",    "1" },
-    { "underline", "4" },
-    { "inverse",   "7" }
-  };
-  // Known colors
-  static std::map<std::string, std::string> colors = {
-    { "black",   "30" },
-    { "red",     "31" },
-    { "green",   "32" },
-    { "yellow",  "33" },
-    { "blue",    "34" },
-    { "magenta", "35" },
-    { "cyan",    "36" },
-    { "white",   "37" }
-  };
   // Return escape sequence, magic-start + 0 for reset
   std::string ret = "\033[0";
 

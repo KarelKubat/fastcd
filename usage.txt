@@ -10,23 +10,26 @@ Example: `fastcd ulb` might resolve in ~/united/liberated/blurbs,
 /usr/local/bin, etc.
 
 Supported flags:
-  -h, -? : This text
+  -h, -? : Shows this text and stops.
   -i     : Matching of initials is done case-insensitively (`ulb` will also
-           match /Users/leo/books)
-  -k COL : When displaying, show key to press colored colored with  COL
-  -d COL : When displaying, show selectable directory colored with COL
+           match /Users/leo/books).
+  -k COL : When displaying, show key to press colored colored with COL.
+  -d COL : When displaying, show selectable directory colored with COL.
+  -C     : list available colors (like red, green).
+  -P     : list available color prefixes (like bright, underline).
   -v     : Displays the version ID and stops.
 
-Display colors (COL in the above) consist of optional prefixes bright,
-underline and inverse that may be repeated, and a color that is one of black,
-red, yellow, blue, magenta, cyan, white. Example: brightunderlineblue.
+Colorizations (COL in the above) consist of optional prefixes that may be
+repeated, and a color. Example: brightunderlineblue. Use the flags -C and -P to
+list the full sets of colors and prefixes.
 
 Fastcd invocations are meant to be evaluated by your shell. E.g. for bash:
   cd $(fastcd ulb)
 Or use a handy function:
   function fcd() { cd $(fastcd $1) }
+See the README for more examples.
 
-Copyright (c) Karel Kubat <karel@kubat.nl>.  Distributed under GPLV3, for
+Copyright (c) Karel Kubat <karel@kubat.nl>. Distributed under GPLV3, for
 details please read https://www.gnu.org/licenses/gpl-3.0.en.html. This
 basically means that it's free, without warranty, and you're free to do with it
 as you like as long as you keep this copyright notice intact, but you must

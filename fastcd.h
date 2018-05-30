@@ -27,6 +27,8 @@ extern std::vector<std::string> scandir(char initial);
 extern void solve(std::string const &initials);
 extern ino_t statdir(std::string const &dirname);
 extern std::string colorcode(std::string opt);
+extern std::vector<std::string> all_colors();
+extern std::vector<std::string> all_prefixes();
 
 // Sources that include this will only have references to EXTERN globals
 // and will not instantiate them.
