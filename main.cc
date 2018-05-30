@@ -14,6 +14,9 @@ int main(int argc, char **argv) {
   // resetcolor is used when optioncolor and/or directorycolor are made active
   // using -k / -d
   resetcolor = "\033[0m";
+  // Terminal properties that will get overruled for silent and immediate
+  // kbd entry
+  tcgetattr(fileno (stdin), &saved_termios);
 
   // Parse flags
   int opt;

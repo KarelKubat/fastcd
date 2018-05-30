@@ -4,8 +4,7 @@ char kbdchar() {
   struct termios tattr;
   char ch;
 
-  tcgetattr(fileno (stdin), &saved_termios);
-  tcgetattr(fileno (stdin), &tattr);   
+  tcgetattr(fileno (stdin), &tattr);
   tattr.c_lflag &= ~(ICANON | ECHO);
   tattr.c_cc[VMIN] = 1;
   tattr.c_cc[VTIME] = 0;
@@ -15,4 +14,3 @@ char kbdchar() {
 
   return ch;
 }
-  

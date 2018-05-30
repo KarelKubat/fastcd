@@ -25,6 +25,7 @@ extern char kbdchar();
 extern void usage();
 extern std::vector<std::string> scandir(char initial);
 extern void solve(std::string const &initials);
+extern void displaysolution(size_t i);
 extern ino_t statdir(std::string const &dirname);
 extern std::string colorcode(std::string opt);
 extern std::vector<std::string> all_colors();

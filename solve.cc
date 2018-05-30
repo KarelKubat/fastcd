@@ -14,35 +14,14 @@ static void solvehere(std::string const &initials) {
 
     // Display solution and enter as a solution.
     solutions.push_back(curd);
-    // Gather string to display, send to std::cerr in one go. First entry
-    // may also be selected using the ENTER key. Make sure nice ANSI coloring
-    // and resetting is applied, if -c/-d are used.
-    std::ostringstream os;
 
-    // selector
-    if (optioncolor != "")
-      os << optioncolor;
-    if (solutions.size() == 1)
-      os << "default ";
-    else
-      os << "      " << keyselectors[solutions.size() - 1] << ' ';
-    if (optioncolor != "")
-      os << resetcolor;
-
-    // directory
-    if (directorycolor != "")
-      os << directorycolor;
-    if (!strncmp(curd.c_str(), homedir.c_str(), homedir.size()))
-      os << '~' << curd.substr(homedir.size());
-    else
-      os << curd;
-    if (directorycolor != "")
-      os << resetcolor;
-
-    // done: output this option
-    os << '\n';
-    std::cerr << os.str();
-    return;
+    // If there is only one option, don't display it yet. Create the
+    // menu only if there are more.
+    if (solutions.size() > 1) {
+      if (solutions.size() == 2)
+        displaysolution(0);
+      displaysolution(solutions.size() - 1);
+    }
   }
 
   // Stop recursing if we've been here before or we can't stat the dir.
@@ -92,7 +71,6 @@ void solve(std::string const &initials) {
       exit(1);
     case 1:
       std::cout << solutions[0] << '\n';
-      cleanup();
       exit(0);
   }
 }
