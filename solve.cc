@@ -92,6 +92,7 @@ void solve(std::string const &initials) {
       exit(1);
     case 1:
       std::cout << solutions[0] << '\n';
+      cleanup();
       exit(0);
   }
 }
