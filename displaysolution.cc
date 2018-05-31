@@ -1,7 +1,7 @@
 #include "fastcd.h"
 
 void displaysolution(size_t i) {
-  if (i < 0 || i >= solutions.size())
+  if (i >= solutions.size())
     return;
 
   // Gather string to display, send to std::cerr in one go. First entry
