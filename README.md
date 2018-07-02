@@ -34,9 +34,9 @@ key without waiting for `fastcd` to dig through the rest of your file system.
 
 ## What you need to install it
 
-1.  Get the sources and `make install`. This compiles `fastcd` and installs it
-    into `$HOME/bin`. If you want another location, say `/usr/local/bin/`,
-    then use:
+1.  Get the sources and `make install`. Or type `make me a sandwich` if you
+    fancy. This compiles `fastcd` and installs it into `$HOME/bin`. If you want
+    another location, say `/usr/local/bin/`, then use:
 
     ```shell
     BINDIR=/usr/local/bin make install

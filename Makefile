@@ -1,7 +1,7 @@
-VER = "0.03"
-SRC = $(wildcard *.cc)
-OBJ = $(patsubst %.cc, %.o, $(SRC))
-BINDIR = ~/bin
+VER      = "0.04"
+SRC      = $(wildcard *.cc)
+OBJ      = $(patsubst %.cc, %.o, $(SRC))
+BINDIR  ?= ~/bin
 
 fastcd: $(OBJ)
 	$(CXX) -g -o fastcd $(OBJ) -lpthread
@@ -20,3 +20,9 @@ clean:
 
 install: fastcd
 	install -s fastcd $(BINDIR)/fastcd
+
+me:
+	@true
+a:
+	@true
+sandwich: install
